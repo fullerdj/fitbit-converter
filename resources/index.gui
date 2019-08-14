@@ -1,0 +1,62 @@
+<svg>
+  <defs>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="import" href="/mnt/sysassets/widgets_common.gui" />
+    <link rel="import" href="/mnt/sysassets/widgets/push_button_widget.gui" />
+    <link rel="import" href="/mnt/sysassets/widgets/square_button_widget.gui" />
+  </defs>
+
+  <rect id="background" fill="black" />
+  <text id="textbox" x="0%" y="50%" width="100%" height="50%"
+        font-family="System-Regular" fill="white" text-length="16" />
+  <use id="1" class="button" href="#square-button"
+       x="0%" y="80%" width="20%" height="20%" fill="white">
+    <set href="#text" attributeName="text-buffer" to="1" />
+    <set href="#text" attributeName="fill" to="white" />
+  </use>
+  <use id="2" class="button" href="#square-button"
+       x="20%" y="80%" width="20%" height="20%" fill="white">
+    <set href="#text" attributeName="text-buffer" to="2" />
+    <set href="#text" attributeName="fill" to="white" />
+  </use>
+  <use id="3" class="button" href="#square-button"
+       x="40%" y="80%" width="20%" height="20%" fill="white">
+    <set href="#text" attributeName="text-buffer" to="3" />
+    <set href="#text" attributeName="fill" to="white" />
+  </use>
+  <use id="4" class="button" href="#square-button"
+       x="60%" y="80%" width="20%" height="20%" fill="white">
+    <set href="#text" attributeName="text-buffer" to="4" />
+    <set href="#text" attributeName="fill" to="white" />
+  </use>
+  <use id="5" class="button" href="#square-button"
+       x="80%" y="80%" width="20%" height="20%" fill="white">
+    <set href="#text" attributeName="text-buffer" to="5" />
+    <set href="#text" attributeName="fill" to="white" />
+  </use>
+  <use id="6" class="button" href="#square-button"
+       x="0%" y="60%" width="20%" height="20%" fill="white">
+    <set href="#text" attributeName="text-buffer" to="6" />
+    <set href="#text" attributeName="fill" to="white" />
+  </use>
+  <use id="7" class="button" href="#square-button"
+       x="20%" y="60%" width="20%" height="20%" fill="white">
+    <set href="#text" attributeName="text-buffer" to="7" />
+    <set href="#text" attributeName="fill" to="white" />
+  </use>
+  <use id="8" class="button" href="#square-button"
+       x="40%" y="60%" width="20%" height="20%" fill="white">
+    <set href="#text" attributeName="text-buffer" to="8" />
+    <set href="#text" attributeName="fill" to="white" />
+  </use>
+  <use id="9" class="button" href="#square-button"
+       x="60%" y="60%" width="20%" height="20%" fill="white">
+    <set href="#text" attributeName="text-buffer" to="9" />
+    <set href="#text" attributeName="fill" to="white" />
+  </use>
+  <use id="0" class="button" href="#square-button"
+       x="80%" y="60%" width="20%" height="20%" fill="white">
+    <set href="#text" attributeName="text-buffer" to="0" />
+    <set href="#text" attributeName="fill" to="white" />
+  </use>
+</svg>
