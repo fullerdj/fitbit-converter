@@ -10,6 +10,8 @@ messaging.peerSocket.onmessage = e => {
     console.log(JSON.stringify(e));
 };
 
+messaging.peerSocket.onopen = e => messaging.peerSocket.send('foo');
+
 function typeChar(c: string) {
     return (_: any) => textbox.text += c;
 }
@@ -19,6 +21,7 @@ document.getElementsByClassName("button").forEach(e => {
 });
 
 document.onkeypress = e => {
+    messaging.peerSocket.send("foo");
     if (e.key === 'up') {
         textbox.text = (parseFloat(textbox.text) * factor)
             .toFixed(4).toString();

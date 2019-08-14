@@ -14,13 +14,14 @@ function updateRate() {
 }
 
 messaging.peerSocket.onopen = () => {
-    //let factor = parseFloat(JSON.parse(settingsStorage.getItem('staticfactor'))["name"]);
+    /*
     let factor = settingsStorage.getItem('staticfactor');
     if (!factor) {
         settingsStorage.setItem('staticfactor', "1");
     }
     console.log(JSON.stringify(factor));
+    */
     updateRate();
-    //messaging.peerSocket.send({ value: factor });
-    //console.log('sent ' + factor);
 };
+
+messaging.peerSocket.onmessage = () => updateRate();
