@@ -2,61 +2,122 @@
   <defs>
     <link rel="stylesheet" href="styles.css" />
     <link rel="import" href="/mnt/sysassets/widgets_common.gui" />
-    <link rel="import" href="/mnt/sysassets/widgets/push_button_widget.gui" />
     <link rel="import" href="/mnt/sysassets/widgets/square_button_widget.gui" />
+    <link rel="import" href="/mnt/sysassets/widgets/combo_button_widget.gui" />
+    <link rel="import" href="/mnt/sysassets/widgets/baseview_widget.gui" />
+    <link rel="import" href="/mnt/sysassets/widgets/panoramaview_widget.gui" />
+    <link rel="import" href="/mnt/sysassets/widgets/pagination_dots.gui" />
+    <link rel="import" href="/mnt/sysassets/widgets/tile_list_widget.gui" />
+
+    <symbol id="currency-item" href="#tile-list-item" focusable="false"
+      pointer-events="none" system-events="all" display="none">
+      <text id="text" />
+      <rect id="tile-divider-bottom" class="tile-divider-bottom" />
+      <rect id="tile-activate" pointer-events="all" x="0" y="0" width="100%"
+        height="100%-2" opacity="0" />
+    </symbol>
   </defs>
 
-  <rect id="background" fill="black" />
-  <text id="textbox" x="0%" y="50%" width="100%" height="50%"
-        font-family="System-Regular" fill="white" text-length="16" />
-  <use id="1" class="button" href="#square-button"
-       x="0%" y="80%" width="20%" height="20%" fill="white">
-    <set href="#text" attributeName="text-buffer" to="1" />
-    <set href="#text" attributeName="fill" to="white" />
+  <use id="container" href="#panoramaview">
+    <rect id="background" fill="black" />
+    <use id="calculator" href="#panoramaview-item">
+      <text id="textbox" x="0%" y="50%" width="90%" height="40"
+            font-family="System-Regular" font-size="40"
+            fill="white" text-length="16" />
+      <text id="current" x="80%" y="50%" width="20%" height="20"
+            font-family="System-Regular" font-size="20"
+            fill="white" text-length="3" />
+      <use id="convert" href="#combo-button-upper-right" fill="fb-cyan">
+        <set href="combo-button-icon" attributeName="href" to="arrow-neg.png"/>
+        <set href="combo-button-stroke" attributeName="display" to="inline"/>
+      </use>
+      <use id="1" class="button" href="#square-button"
+          x="0%" y="80%" width="20%" height="20%" fill="white">
+        <set href="#text" attributeName="text-buffer" to="1" />
+        <set href="#text" attributeName="fill" to="white" />
+      </use>
+      <use id="2" class="button" href="#square-button"
+          x="20%" y="80%" width="20%" height="20%" fill="white">
+        <set href="#text" attributeName="text-buffer" to="2" />
+        <set href="#text" attributeName="fill" to="white" />
+      </use>
+      <use id="3" class="button" href="#square-button"
+          x="40%" y="80%" width="20%" height="20%" fill="white">
+        <set href="#text" attributeName="text-buffer" to="3" />
+        <set href="#text" attributeName="fill" to="white" />
+      </use>
+      <use id="4" class="button" href="#square-button"
+          x="60%" y="80%" width="20%" height="20%" fill="white">
+        <set href="#text" attributeName="text-buffer" to="4" />
+        <set href="#text" attributeName="fill" to="white" />
+      </use>
+      <use id="5" class="button" href="#square-button"
+          x="80%" y="80%" width="20%" height="20%" fill="white">
+        <set href="#text" attributeName="text-buffer" to="5" />
+        <set href="#text" attributeName="fill" to="white" />
+      </use>
+      <use id="6" class="button" href="#square-button"
+          x="0%" y="60%" width="20%" height="20%" fill="white">
+        <set href="#text" attributeName="text-buffer" to="6" />
+        <set href="#text" attributeName="fill" to="white" />
+      </use>
+      <use id="7" class="button" href="#square-button"
+          x="20%" y="60%" width="20%" height="20%" fill="white">
+        <set href="#text" attributeName="text-buffer" to="7" />
+        <set href="#text" attributeName="fill" to="white" />
+      </use>
+      <use id="8" class="button" href="#square-button"
+          x="40%" y="60%" width="20%" height="20%" fill="white">
+        <set href="#text" attributeName="text-buffer" to="8" />
+        <set href="#text" attributeName="fill" to="white" />
+      </use>
+      <use id="9" class="button" href="#square-button"
+          x="60%" y="60%" width="20%" height="20%" fill="white">
+        <set href="#text" attributeName="text-buffer" to="9" />
+        <set href="#text" attributeName="fill" to="white" />
+      </use>
+      <use id="0" class="button" href="#square-button"
+          x="80%" y="60%" width="20%" height="20%" fill="white">
+        <set href="#text" attributeName="text-buffer" to="0" />
+        <set href="#text" attributeName="fill" to="white" />
+      </use>
+    </use>
+    <use id="settings" href="#panoramaview-item">
+      <use id="convert-from" href="#square-button"
+        x="10%" y="40%" width="20%" height="20%" fill="fb-red">
+        <set href="#text" attributeName="text-buffer" to="foo" />
+        <set href="#text" attributeName="fill" to="white"/>
+      </use>
+      <use id="convert-to" href="#square-button"
+        x="70%" y="40%" width="20%" height="20%" fill="fb-red">
+        <set href="#text" attributeName="text-buffer" to="bar" />
+        <set href="#text" attributeName="fill" to="white"/>
+      </use>
+    </use>
+    <use id="pagination-dots" href="#pagination-widget" y="8">
+      <use href="#pagination-highlight-dot"/>
+      <use href="#pagination-dot"/>
+    </use>
   </use>
-  <use id="2" class="button" href="#square-button"
-       x="20%" y="80%" width="20%" height="20%" fill="white">
-    <set href="#text" attributeName="text-buffer" to="2" />
-    <set href="#text" attributeName="fill" to="white" />
-  </use>
-  <use id="3" class="button" href="#square-button"
-       x="40%" y="80%" width="20%" height="20%" fill="white">
-    <set href="#text" attributeName="text-buffer" to="3" />
-    <set href="#text" attributeName="fill" to="white" />
-  </use>
-  <use id="4" class="button" href="#square-button"
-       x="60%" y="80%" width="20%" height="20%" fill="white">
-    <set href="#text" attributeName="text-buffer" to="4" />
-    <set href="#text" attributeName="fill" to="white" />
-  </use>
-  <use id="5" class="button" href="#square-button"
-       x="80%" y="80%" width="20%" height="20%" fill="white">
-    <set href="#text" attributeName="text-buffer" to="5" />
-    <set href="#text" attributeName="fill" to="white" />
-  </use>
-  <use id="6" class="button" href="#square-button"
-       x="0%" y="60%" width="20%" height="20%" fill="white">
-    <set href="#text" attributeName="text-buffer" to="6" />
-    <set href="#text" attributeName="fill" to="white" />
-  </use>
-  <use id="7" class="button" href="#square-button"
-       x="20%" y="60%" width="20%" height="20%" fill="white">
-    <set href="#text" attributeName="text-buffer" to="7" />
-    <set href="#text" attributeName="fill" to="white" />
-  </use>
-  <use id="8" class="button" href="#square-button"
-       x="40%" y="60%" width="20%" height="20%" fill="white">
-    <set href="#text" attributeName="text-buffer" to="8" />
-    <set href="#text" attributeName="fill" to="white" />
-  </use>
-  <use id="9" class="button" href="#square-button"
-       x="60%" y="60%" width="20%" height="20%" fill="white">
-    <set href="#text" attributeName="text-buffer" to="9" />
-    <set href="#text" attributeName="fill" to="white" />
-  </use>
-  <use id="0" class="button" href="#square-button"
-       x="80%" y="60%" width="20%" height="20%" fill="white">
-    <set href="#text" attributeName="text-buffer" to="0" />
-    <set href="#text" attributeName="fill" to="white" />
-  </use>
+
+  <svg id="currency-select" display="none">
+    <rect class="full-size" fill="black" />
+    <use id="currency-list" href="#tile-list">
+      <var id="virtual" value="1" />
+      <var id="separator-height-bottom" value="2" />
+
+      <use id="tile-pool" href="#tile-list-pool">
+        <use id="tile-pool[0]" href="#currency-item" class="tile-list-item" />
+        <use id="tile-pool[1]" href="#currency-item" class="tile-list-item" />
+        <use id="tile-pool[2]" href="#currency-item" class="tile-list-item" />
+        <use id="tile-pool[3]" href="#currency-item" class="tile-list-item" />
+        <use id="tile-pool[4]" href="#currency-item" class="tile-list-item" />
+        <use id="tile-pool[5]" href="#currency-item" class="tile-list-item" />
+        <use id="tile-pool[6]" href="#currency-item" class="tile-list-item" />
+        <use id="tile-pool[7]" href="#currency-item" class="tile-list-item" />
+        <use id="tile-pool[8]" href="#currency-item" class="tile-list-item" />
+        <use id="tile-pool[9]" href="#currency-item" class="tile-list-item" />
+      </use>
+    </use>
+  </svg>
 </svg>

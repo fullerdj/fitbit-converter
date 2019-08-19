@@ -1,18 +1,18 @@
 function settingsComponent(props: any) {
   return (
     <Page>
-      <Section title={<Text bold align="center"> 1 USD = ? </Text>}>
+      <Section title={<Text bold align="center"> Conversions </Text>}>
         <TextInput
-          title='Static rate'
-          label='Converstion factor'
-          settingsKey='staticfactor'
-          action='save factor'
+          title='Convert From'
+          label='Convert From'
+          settingsKey='convertfrom'
+          action='save'
         />
         <TextInput
-          title='Dynamic rate'
-          label='Currency code'
-          settingsKey='currencycode'
-          action='save code'
+          title='Convert To'
+          label='Convert To'
+          settingsKey='convertto'
+          action='save'
         />
       </Section>
     </Page>
