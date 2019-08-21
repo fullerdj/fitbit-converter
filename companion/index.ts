@@ -2,12 +2,6 @@ import * as messaging from 'messaging';
 import { settingsStorage } from 'settings';
 const baseURL: string = 'https://api.exchangeratesapi.io/latest';
 
-/*
-messaging.peerSocket.onopen = () => {
-    updateRate();
-};
-*/
-
 function getSetting(key: string, def: string): string {
     let ret: string = settingsStorage.getItem(key);
     try {
