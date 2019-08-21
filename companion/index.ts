@@ -15,7 +15,7 @@ function getSetting(key: string, def: string): string {
 let baseCurrency: string = getSetting('convertfrom', 'USD');
 let targetCurrency: string = getSetting('convertto', 'EUR');
 
-function updateRate() {
+function updateRate(): void {
     fetch(baseURL + '?base=' + baseCurrency).then(response => {
         return response.json();
     }).then(rateobj => {

@@ -1,4 +1,4 @@
-function settingsComponent(props: any) {
+function settingsComponent(props: SettingsComponentProps): JSX.Element {
   return (
     <Page>
       <Section title={<Text bold align="center"> Conversions </Text>}>

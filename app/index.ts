@@ -2,25 +2,39 @@ import document from 'document';
 import { me } from 'appbit';
 import * as messaging from 'messaging';
 
-let textbox: any = document.getElementById('textbox');
+interface TileInfo extends VirtualTileListItemInfo {
+    type: string;
+    index: number;
+}
+
+interface Rates {
+    [currencyCode: string]: number;
+}
+
+let textbox: TextElement = document.getElementById('textbox') as TextElement;
 let currencyChooser: any = document.getElementById('currency-select');
-let currencyList: any = document.getElementById('currency-list');
-let current: any = document.getElementById('current');
-let convertFrom: any = document.getElementById('convert-from');
-let convertTo: any = document.getElementById('convert-to');
+let currencyList: VirtualTileList<TileInfo> =
+    document.getElementById('currency-list') as VirtualTileList<TileInfo>;
+let current: TextElement = document.getElementById('current') as TextElement;
+let convertFrom: Element = document.getElementById('convert-from');
+let convertTo: Element = document.getElementById('convert-to');
 
 let currencies: string[] = [];
-let rates: any = {};
+let rates: Rates = {};
 let baseCurrency: string = '';
 let targetCurrency: string = '';
 
-convertFrom.onactivate = (e: any) => buildChooser(arg => setBaseCurrency(arg));
-convertTo.onactivate = (e: any) => buildChooser(arg => setTargetCurrency(arg));
-document.getElementsByClassName('button').forEach(e => {
+convertFrom.onactivate = (e: ActivateEvent) => {
+    buildChooser(arg => setBaseCurrency(arg));
+};
+convertTo.onactivate = (e: ActivateEvent) => {
+    buildChooser(arg => setTargetCurrency(arg));
+};
+document.getElementsByClassName('button').forEach((e: Element) => {
     e.onactivate = typeChar(e.id);
 });
-document.getElementById('convert').onactivate = e => convert();
-document.onkeypress = e => {
+document.getElementById('convert').onactivate = (e: ActivateEvent) => convert();
+document.onkeypress = (e: KeyboardEvent) => {
     if (e.key === 'back') {
         e.preventDefault();
         if (textbox.text === '') {
@@ -30,9 +44,10 @@ document.onkeypress = e => {
         }
     }
 };
-
-messaging.peerSocket.onopen = e => messaging.peerSocket.send({ wakeup: true });
-messaging.peerSocket.onmessage = e => {
+messaging.peerSocket.onopen = (e: messaging.MessageEvent) => {
+     messaging.peerSocket.send({ wakeup: true });
+};
+messaging.peerSocket.onmessage = (e: messaging.MessageEvent) => {
     console.log(JSON.stringify(e));
     rates = e.data['rates'];
     setBaseCurrency(e.data['base']);
@@ -44,17 +59,16 @@ messaging.peerSocket.onmessage = e => {
 
 function buildChooser(f: (arg: string) => void): void {
     currencyList.delegate = {
-        getTileInfo: (index: number) => {
+        getTileInfo: (index: number): TileInfo => {
             return {
                 type: 'tile-pool',
-                value: 'Menu item',
                 index: index
             };
         },
-        configureTile: (tile: Element, info: any) => {
+        configureTile: (tile: Element, info: TileInfo) => {
             if (info.type === 'tile-pool') {
                 tile.getElementById('text').text = currencies[info.index];
-                let touch = tile.getElementById('tile-activate');
+                let touch: Element = tile.getElementById('tile-activate');
                 touch.onclick = e => {
                     f(currencies[info.index]);
                     currencyChooser.style.display = 'none';
@@ -84,8 +98,8 @@ function setTargetCurrency(arg: string): void {
     messaging.peerSocket.send({ target: arg });
 }
 
-function typeChar(c: string) {
-    return (_: any) => textbox.text += c;
+function typeChar(c: string): (_: Event) => void {
+    return (_: Event) => textbox.text += c;
 }
 
 function updateTextbox(f: (x: number) => number): void {
