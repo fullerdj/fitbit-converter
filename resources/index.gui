@@ -24,7 +24,7 @@
       <text id="textbox" x="0%" y="50%" width="90%" height="40"
             font-family="System-Regular" font-size="40"
             fill="white" text-length="16" />
-      <text id="current" x="80%" y="50%" width="20%" height="20"
+      <text id="current" x="0%" y="50%-40" width="20%" height="20"
             font-family="System-Regular" font-size="20"
             fill="white" text-length="3" />
       <use id="convert" href="#combo-button-upper-right" fill="fb-cyan">
@@ -79,6 +79,11 @@
       <use id="0" class="button" href="#square-button"
           x="80%" y="60%" width="20%" height="20%" fill="white">
         <set href="#text" attributeName="text-buffer" to="0" />
+        <set href="#text" attributeName="fill" to="white" />
+      </use>
+      <use id="." class="button" href="#square-button"
+          x="80%" y="40%" width="20%" height="20%" fill="white">
+        <set href="#text" attributeName="text-buffer" to="." />
         <set href="#text" attributeName="fill" to="white" />
       </use>
     </use>
